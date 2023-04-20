@@ -16,7 +16,7 @@ describe('Persistent Node Chat Server', () => {
   beforeAll((done) => {
     dbConnection.connect();
 
-       const tablename = ''; // TODO: fill this out
+    const tablename = 'messages'; // TODO: fill this out
 
     /* Empty the db table before all tests so that multiple tests
      * (or repeated runs of the tests)  will not fail when they should be passing
@@ -28,10 +28,11 @@ describe('Persistent Node Chat Server', () => {
     dbConnection.end();
   });
 
+  const username = 'Valjean';
+  const message = 'In mercy\'s name, three days is all I need.';
+  const roomname = 'Hello';
+
   it('Should insert posted messages to the DB', (done) => {
-    const username = 'Valjean';
-    const message = 'In mercy\'s name, three days is all I need.';
-    const roomname = 'Hello';
     // Create a user on the chat server database.
     axios.post(`${API_URL}/users`, { username })
       .then(() => {
@@ -64,9 +65,10 @@ describe('Persistent Node Chat Server', () => {
   });
 
   it('Should output all messages from the DB', (done) => {
+
     // Let's insert a message into the db
-       const queryString = '';
-       const queryArgs = [];
+    const queryString = 'SELECT * FROM messages';
+    const queryArgs = [];
     /* TODO: The exact query string and query args to use here
      * depend on the schema you design, so I'll leave them up to you. */
     dbConnection.query(queryString, queryArgs, (err) => {
@@ -79,7 +81,7 @@ describe('Persistent Node Chat Server', () => {
         .then((response) => {
           const messageLog = response.data;
           expect(messageLog[0].text).toEqual(message);
-          expect(messageLog[0].roomname).toEqual(roomname);
+          expect(messageLog[0].name).toEqual(roomname); // changed roomname to name
           done();
         })
         .catch((err) => {

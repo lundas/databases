@@ -18,15 +18,17 @@ DROP TABLE IF EXISTS `rooms`;
 
 CREATE TABLE `rooms` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `name` MEDIUMTEXT,
+  `name` VARCHAR(14),
   PRIMARY KEY (`id`)
 );
+
+INSERT INTO `rooms` (name) VALUES ('Hello');
 
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `name` MEDIUMTEXT NOT NULL,
+  `name` VARCHAR(12) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -36,6 +38,7 @@ CREATE TABLE `users` (
 
 ALTER TABLE `messages` ADD FOREIGN KEY (id_rooms) REFERENCES `rooms` (`id`);
 ALTER TABLE `messages` ADD FOREIGN KEY (id_users) REFERENCES `users` (`id`);
+-- ALTER TABLE `users` ADD UNIQUE (`name`) -- COULD BE NO BACKTICKS
 
 -- ---
 -- Table Properties

@@ -25,5 +25,8 @@ module.exports = {
           res.status(201).json(results); // format in model correct?
         }
       });
-  } // a function which handles posting a message to the database
+  }, // a function which handles posting a message to the database
+  options: function(req, res) {
+    res.sendStatus(204);
+  }
 };

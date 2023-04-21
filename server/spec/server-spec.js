@@ -30,7 +30,7 @@ describe('Persistent Node Chat Server', () => {
 
   const username = 'Valjean';
   const message = 'In mercy\'s name, three days is all I need.';
-  const roomname = 'Hello';
+  const roomname = '';
 
   it('Should insert posted messages to the DB', (done) => {
     // Create a user on the chat server database.

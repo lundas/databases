@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS `messages`;
 
 CREATE TABLE messages (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `text` MEDIUMTEXT NULL DEFAULT NULL,
+  `text` MEDIUMTEXT,
   `id_rooms` INTEGER NOT NULL,
   `id_users` INTEGER NOT NULL,
   PRIMARY KEY (`id`)

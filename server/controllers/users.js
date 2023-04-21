@@ -20,5 +20,8 @@ module.exports = {
           res.status(201).json(results);
         }
       });
+  },
+  options: function (req, res) {
+    res.sendStatus(204);
   }
 };
